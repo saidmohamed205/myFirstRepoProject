@@ -9,13 +9,19 @@ package practiceCh2;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.security.KeyStore.PrivateKeyEntry;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JTextArea;
 /**
  * This class allows the user to view images.
- * @author Said Mohamed
- * @version 4/06/2014
+ * @author Said Mohamed.
+ * @version 4/29/2014
  *
  */
 @SuppressWarnings("serial")
@@ -24,9 +30,9 @@ public class FileChooserPractice extends JFrame implements ActionListener
 	
 	//constants
 	private static final int APPLET_WIDTH = 400;
-	private static final int APPLET_HEIGHT = 200;
+	private static final int APPLET_HEIGHT = APPLET_WIDTH * 2;
 	
-	
+	// a separate class call AboutDialog.
 	private AboutDialog myDialog;
 	
 	// instance fields.
@@ -83,7 +89,8 @@ public class FileChooserPractice extends JFrame implements ActionListener
 		existItem.addActionListener(this);
 		
 		aboutMenu = new JMenu("About");
-		aboutMenu.addActionListener(new ActionListener()
+		aboutMenu.addActionListener(new ActionListener()  // this does not work yet, am trying to make a pop up for 
+		                                                  // the user extra infor about the software.
 		{
 
 			@Override
@@ -114,13 +121,14 @@ public class FileChooserPractice extends JFrame implements ActionListener
 				String name = myFileChooser.getSelectedFile().getPath();
 				myLabel.setIcon(new ImageIcon(name));
 				
-				this.pack();
+				this.pack(); 
 				this.setLocationRelativeTo(null);
+				
 				mySaveAs.setEnabled(true);
 			}
 			
 		}
-		else if (theEvent.getSource() == mySaveAs)
+		else if (theEvent.getSource() == mySaveAs) // this is not complete yet but is visible on the gui.
 		{
 			int result = myFileChooser.showSaveDialog(FileChooserPractice.this);
 			
